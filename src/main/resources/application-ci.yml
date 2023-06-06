@@ -46,6 +46,7 @@ mry:
     expire: 7200
     aheadAutoRefresh: 60
   wx:
+    mobileWxEnabled: false
     mobileAppId: your-wx-mobile-app-id
     mobileAppSecret: your-wx-mobile-app-secret
     pcAppId: your-pc-mobile-app-id

@@ -283,6 +283,10 @@ public class WxNotificationService implements NotificationService {
     }
 
     private void sendTemplateMessage(WxTemplateMessage message) {
+        if (!wxProperties.isMobileWxEnabled()) {
+            return;
+        }
+
         try {
             String accessToken = wxAccessTokenService.getAccessToken();
             String url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=" + accessToken;

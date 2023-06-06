@@ -27,6 +27,10 @@ public class WxAccessTokenService {
 
     @Retryable(backoff = @Backoff(delay = 1000, multiplier = 3))
     public void refreshAccessToken() {
+        if (!wxProperties.isMobileWxEnabled()) {
+            return;
+        }
+
         String access_token = fetchAccessToken();
         stringRedisTemplate.opsForValue().set(WX_ACCESS_TOKEN, access_token);
         log.info("Refreshed wx access token.");

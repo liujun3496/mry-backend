@@ -73,20 +73,9 @@ public class MrySystemInitializer implements ApplicationListener<ApplicationRead
         ensureMongoCollectionExist();
         ensureMongoIndexExist();
         ensureMryManageAppsExist();
+        wxAccessTokenService.refreshAccessToken();
+        wxJsSdkService.refreshJsApiTicket();
         administrativeProvider.init();
-
-        try {
-            wxAccessTokenService.refreshAccessToken();
-        } catch (Throwable t) {
-            log.warn("Failed to refresh wx access token: {}", t.getMessage());
-        }
-
-        try {
-            wxJsSdkService.refreshJsApiTicket();
-        } catch (Throwable t) {
-            log.warn("Failed to refresh wx js api ticket: {}", t.getMessage());
-        }
-
         log.info("Mr.Y system initialized.");
     }
 

@@ -13,6 +13,8 @@ import org.springframework.validation.annotation.Validated;
 @ConfigurationProperties("mry.wx")
 public class WxProperties {
 
+    private boolean mobileWxEnabled;
+
     @NotBlank
     private String mobileAppId;
 

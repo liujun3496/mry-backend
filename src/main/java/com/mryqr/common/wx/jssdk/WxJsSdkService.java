@@ -33,6 +33,10 @@ public class WxJsSdkService {
 
     @Retryable(backoff = @Backoff(delay = 1000, multiplier = 3))
     public void refreshJsApiTicket() {
+        if (!wxProperties.isMobileWxEnabled()) {
+            return;
+        }
+
         String ticket = this.fetchJsApiTicket();
         stringRedisTemplate.opsForValue().set(JSAPI_TICKET, ticket);
         log.info("Refreshed JS API ticket.");
