@@ -4,7 +4,7 @@
 - 与本项目配套的码如云前端代码请访问：[https://github.com/mryqr-com/mry-frontend](https://github.com/mryqr-com/mry-frontend)
 
 ## 在线免费使用
-- 你可以访问[https://www.mryqr.com](https://www.mryqr.com)免费使用码如云在线服务
+- 您可以访问[https://www.mryqr.com](https://www.mryqr.com)免费使用码如云在线服务
 - 我们正在寻找能够提供微信公众号（需要是**服务号**类型）的合作方，以让码如云能够入驻在该公众号中，从而为用户提供更多更完善的功能，有意者可联系作者
 
 ## 本地运行
