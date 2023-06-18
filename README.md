@@ -10,7 +10,7 @@
 - 为了证明DDD能真实落地，也为了开发出一套让自己心仪的软件系统，更多信息请参考笔者的文章[构建自己的软件大厦](https://docs.mryqr.com/build-your-own-software-skyscraper/)
 
 ## 本地运行
-- 先确保本地安装的是Java 17及以上版本
+- 确保本地已安装Java 17+及Docker
 - 本地启动：`./local-run.sh`，该命令将通过docker-compose自动运行MongoDB和Redis，再启动Spring Boot主程序，启动后访问 http://localhost:8080/about ，如可正常访问则表示启动成功
 - 本地构建：`./ci-build.sh`，该命令将通过docker-compose自动运行MongoDB和Redis，再运行单元测试，API测试以及动态代码检查等构建步骤
 - 如需在本地进行前后端联调，请参考[码如云前端](https://github.com/mryqr-com/mry-frontend)
