@@ -12,12 +12,7 @@ import com.mryqr.core.group.domain.GroupRepository;
 import com.mryqr.core.plan.domain.PlanType;
 import com.mryqr.core.qr.domain.QR;
 import com.mryqr.core.qr.domain.QrRepository;
-import com.mryqr.core.qr.domain.attribute.AttributeValue;
-import com.mryqr.core.qr.domain.attribute.DropdownAttributeValue;
-import com.mryqr.core.qr.domain.attribute.IdentifierAttributeValue;
-import com.mryqr.core.qr.domain.attribute.ItemStatusAttributeValue;
-import com.mryqr.core.qr.domain.attribute.MultiLineTextAttributeValue;
-import com.mryqr.core.qr.domain.attribute.TextAttributeValue;
+import com.mryqr.core.qr.domain.attribute.*;
 import com.mryqr.core.qr.query.plate.QrPlateAttributeValueQueryService;
 import com.mryqr.core.tenant.domain.Tenant;
 import com.mryqr.core.tenant.domain.TenantRepository;
@@ -44,18 +39,7 @@ import static com.mryqr.core.common.utils.MongoCriteriaUtils.mongoSortableFieldO
 import static com.mryqr.core.common.utils.MongoCriteriaUtils.mongoTextFieldOf;
 import static com.mryqr.core.common.utils.MryConstants.QR_COLLECTION;
 import static com.mryqr.core.common.utils.Pagination.pagination;
-import static com.mryqr.management.apptemplate.MryAppTemplateManageApp.CARD_DESCRIPTION_ATTRIBUTE_ID;
-import static com.mryqr.management.apptemplate.MryAppTemplateManageApp.CATEGORIES_ATTRIBUTE_ID;
-import static com.mryqr.management.apptemplate.MryAppTemplateManageApp.DEMO_QR_ATTRIBUTE_ID;
-import static com.mryqr.management.apptemplate.MryAppTemplateManageApp.DISPLAY_ORDER_ATTRIBUTE_ID;
-import static com.mryqr.management.apptemplate.MryAppTemplateManageApp.FEATURE_ATTRIBUTE_ID;
-import static com.mryqr.management.apptemplate.MryAppTemplateManageApp.FEATURE_NAMES_MAP;
-import static com.mryqr.management.apptemplate.MryAppTemplateManageApp.INTRODUCTION_ATTRIBUTE_ID;
-import static com.mryqr.management.apptemplate.MryAppTemplateManageApp.MRY_APP_TEMPLATE_MANAGE_APP_ID;
-import static com.mryqr.management.apptemplate.MryAppTemplateManageApp.PUBLISHED_STATUS_OPTION_ID;
-import static com.mryqr.management.apptemplate.MryAppTemplateManageApp.SCENARIO_ATTRIBUTE_ID;
-import static com.mryqr.management.apptemplate.MryAppTemplateManageApp.STATUS_ATTRIBUTE_ID;
-import static com.mryqr.management.apptemplate.MryAppTemplateManageApp.TEMPLATE_PLAN_TYPE_ATTRIBUTE_ID;
+import static com.mryqr.management.apptemplate.MryAppTemplateManageApp.*;
 import static com.mryqr.management.common.PlanTypeControl.OPTION_TO_PLAN_MAP;
 import static java.util.List.of;
 import static lombok.AccessLevel.PRIVATE;
@@ -133,6 +117,9 @@ public class AppTemplateQueryService {
             String cardDescription = cardDescriptionValue != null ?
                     ((TextAttributeValue) cardDescriptionValue).getText() : null;
 
+            AttributeValue appliedCountValue = qRawQr.attributeValues.get(APPLIED_COUNT_ATTRIBUTE_ID);
+            int appliedCount = appliedCountValue != null ? ((DoubleAttributeValue) appliedCountValue).getNumber().intValue() : 0;
+
             return QListAppTemplate.builder()
                     .id(qRawQr.getId())
                     .name(qRawQr.getName())
@@ -140,6 +127,7 @@ public class AppTemplateQueryService {
                     .planType(planType)
                     .features(features)
                     .cardDescription(cardDescription)
+                    .appliedCount(appliedCount)
                     .build();
         }).collect(toImmutableList());
 

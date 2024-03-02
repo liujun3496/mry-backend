@@ -20,4 +20,5 @@ public class QListAppTemplate {
     private PlanType planType;
     private List<String> features;
     private String cardDescription;
+    private int appliedCount;
 }
