@@ -561,7 +561,9 @@ public class QrQueryService {
         Object[] terms = splitSearchBySpace(search);
         return criteria.orOperator(where("svs").all(terms),
                 where("text").all(terms),
-                where("name").is(search),
+                where("name").regex(search),
+                where("creator").regex(search),
+                where("attributeDisplayValues").regex(search),
                 where("customId").is(search));
     }
 
