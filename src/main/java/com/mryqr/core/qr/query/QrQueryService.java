@@ -230,7 +230,7 @@ public class QrQueryService {
                 .circulationOptionId(qr.getCirculationOptionId())
                 .createdAt(qr.getCreatedAt())
                 .createdBy(qr.getCreatedBy())
-                .creator(qr.getCreator())
+                //.creator(qr.getCireator())
                 .geolocation(qr.getGeolocation())
                 .headerImage(qr.getHeaderImage())
                 .attributeDisplayValues(displayValues)
@@ -560,7 +560,7 @@ public class QrQueryService {
 
         Object[] terms = splitSearchBySpace(search);
         return criteria.orOperator(where("svs").all(terms),
-                where("text").all(terms),
+                where("text").regex(search),
                 where("name").regex(search),
                 where("gm_zczrr").regex(search),
                 where("资产责任人").regex(search),
