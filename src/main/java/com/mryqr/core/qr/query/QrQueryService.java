@@ -562,6 +562,8 @@ public class QrQueryService {
         return criteria.orOperator(where("svs").all(terms),
                 where("text").all(terms),
                 where("name").regex(search),
+                where("gm_zczrr").regex(search),
+                where("资产责任人").regex(search),
                 where("creator").regex(search),
                 where("attributeDisplayValues").regex(search),
                 where("customId").is(search));
