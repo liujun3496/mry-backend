@@ -681,6 +681,7 @@ public class App extends AggregateRoot {
                     attribute.isControlAware() &&
                     (attribute.getType() == CONTROL_LAST || attribute.getType() == CONTROL_FIRST)) {
                 Page page = pageById(attribute.getPageId());
+                //每个资产一次提交的和每次新建的都支持导入
                 if (page.isOncePerInstanceSubmitType()||page.isNewSubmitType()) {
                     Control control = controlById(attribute.getControlId());
                     return control.getType().isQrImportable();
