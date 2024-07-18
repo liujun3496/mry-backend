@@ -681,7 +681,7 @@ public class App extends AggregateRoot {
                     attribute.isControlAware() &&
                     (attribute.getType() == CONTROL_LAST || attribute.getType() == CONTROL_FIRST)) {
                 Page page = pageById(attribute.getPageId());
-                if (page.isOncePerInstanceSubmitType()) {
+                if (page.isOncePerInstanceSubmitType()||page.isNewSubmitType()) {
                     Control control = controlById(attribute.getControlId());
                     return control.getType().isQrImportable();
                 }
