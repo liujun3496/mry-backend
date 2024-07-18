@@ -565,6 +565,7 @@ public class QrQueryService {
                 where("gm_zczrr").regex(search),
                 where("资产责任人").regex(search),
                 where("creator").regex(search),
+                //模糊
                 where("attributeDisplayValues").regex("^" + search + "$"),
                 where("customId").is(search));
     }
