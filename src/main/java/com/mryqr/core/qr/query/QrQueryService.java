@@ -564,7 +564,12 @@ public class QrQueryService {
                 where("name").regex(search),
                 //where("creator").regex(search),
                 //模糊
-                where("attributeDisplayValues.a_ugD8JQcQEswTqGT9bTriKm.text").regex(search, "i"),
+                //where("attributeDisplayValues.a_ugD8JQcQEswTqGT9bTriKm.text").regex(search, "i"),
+                where("attributeDisplayValues").elemMatch(
+                        where("a_ugD8JQcQEswTqGT9bTriKm").elemMatch(
+                                where("text").regex(search, "i")
+                        )
+                ),
                 where("customId").is(search));
     }
 
