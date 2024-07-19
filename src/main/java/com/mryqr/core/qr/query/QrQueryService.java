@@ -560,13 +560,11 @@ public class QrQueryService {
 
         Object[] terms = splitSearchBySpace(search);
         return criteria.orOperator(where("svs").all(terms),
-                where("text").regex(search),
+                where("text").all(terms),
                 where("name").regex(search),
-                where("gm_zczrr").regex(search),
-                where("资产责任人").regex(search),
-                where("creator").regex(search),
+                //where("creator").regex(search),
                 //模糊
-                where("attributeDisplayValues").regex("^" + search + "$"),
+                where("attributeDisplayValues.a_ugD8JQcQEswTqGT9bTriKm.text").regex(search, "i"),
                 where("customId").is(search));
     }
 
