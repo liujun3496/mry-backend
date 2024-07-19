@@ -570,6 +570,7 @@ public class QrQueryService {
                                 where("text").regex(search, "i")
                         )
                 ),
+                where("attributeDisplayValues.a_ugD8JQcQEswTqGT9bTriKm.text").regex(search),
                 where("customId").is(search));
     }
 
